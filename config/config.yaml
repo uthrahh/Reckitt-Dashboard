@@ -1,0 +1,35 @@
+# =============================================================================
+# Pipeline Configuration
+# All environment-specific and tunable values live here — never hardcode
+# paths or thresholds inside pipeline logic.
+# =============================================================================
+
+app:
+  name: "reckitt_fmcg_sales_pipeline"
+  environment: "local"          # local | dev | prod
+
+paths:
+  raw_data: "data/raw/reckitt_sales.csv"
+  staging_dir: "data/staging"
+  curated_dir: "data/curated"
+  logs_dir: "logs"
+
+spark:
+  app_name: "ReckittFMCGSalesETL"
+  shuffle_partitions: 8          # tuned low for local mode / small dataset
+  master: "local[*]"
+
+data_quality:
+  max_allowed_null_pct: 5.0      # fail pipeline if any column exceeds this
+  dedup_key_columns:
+    - "PRODUCT_ID"
+    - "STORE_ID"
+    - "Month #"
+    - "Year"
+    - "BATCH_NUMBER"
+
+cleaning:
+  warehouse_id_fill_value: "UNKNOWN"
+  numeric_string_columns:        # columns stored as comma-formatted strings
+    - "Value Sales"
+    - "Units Sales"
