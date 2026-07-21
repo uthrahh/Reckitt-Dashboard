@@ -27,6 +27,11 @@ from src.utils.logger import get_logger
 
 logger = get_logger(__name__)
 
+# Formatting/display constants — no behavioral effect, just cleanup of
+# magic numbers that were previously inline in validate_dimension_uniqueness.
+_LOG_LABEL_WIDTH = 40
+_MAX_OFFENDING_KEYS_TO_DISPLAY = 20
+
 # Natural key(s) that uniquely identify one row in each dimension.
 # Single source of truth, reused by both the builders below and by
 # validate_dimension_uniqueness() so validation always checks the same
@@ -188,15 +193,15 @@ def validate_dimension_uniqueness(dimensions: dict) -> list:
         label = "/".join(natural_key_cols)
 
         if total_rows == distinct_keys:
-            print(f"{label:.<40} PASS")
+            print(f"{label:.<{_LOG_LABEL_WIDTH}} PASS")
             results.append((dim_name, total_rows))
         else:
-            print(f"{label:.<40} FAIL")
+            print(f"{label:.<{_LOG_LABEL_WIDTH}} FAIL")
             offending = (
                 dim_df.groupBy(*natural_key_cols)
                 .count()
                 .filter(F.col("count") > 1)
-                .limit(20)
+                .limit(_MAX_OFFENDING_KEYS_TO_DISPLAY)
                 .collect()
             )
             failures.append((dim_name, natural_key_cols, offending))

@@ -21,12 +21,10 @@ spark:
 
 data_quality:
   max_allowed_null_pct: 5.0      # fail pipeline if any column exceeds this
-  dedup_key_columns:
-    - "PRODUCT_ID"
-    - "STORE_ID"
-    - "Month #"
-    - "Year"
-    - "BATCH_NUMBER"
+  # NOTE: deduplication uses full-row matching (see cleaning.deduplicate_rows),
+  # not a business-key subset — the profiling step confirmed source
+  # duplicates are exact re-ingestion artifacts, not legitimate repeats.
+  # No config entry needed here; documented for anyone tempted to add one.
 
 cleaning:
   warehouse_id_fill_value: "UNKNOWN"

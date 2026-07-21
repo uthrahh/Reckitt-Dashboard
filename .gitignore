@@ -1,7 +1,44 @@
+# Python
 __pycache__/
 *.pyc
-data/staging/*
-data/curated/*
-logs/*.log
-.venv/
+*.pyo
 *.egg-info/
+.eggs/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Spark
+metastore_db/
+derby.log
+spark-warehouse/
+
+# Data (never commit raw/curated business data)
+data/raw/*
+!data/raw/.gitkeep
+data/staging/*
+!data/staging/.gitkeep
+data/curated/*
+!data/curated/.gitkeep
+
+# Logs
+logs/*.log
+!logs/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
