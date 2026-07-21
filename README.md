@@ -55,7 +55,7 @@ See [docs/diagrams/system_architecture.md](docs/diagrams/system_architecture.md)
 ## Project Structure
 
 ```
-reckitt-fmcg-analytics/
+Reckitt-Dashboard/
 ├── config/
 │   ├── config.yaml              # paths, thresholds, environment settings
 │   └── schema_config.py         # explicit PySpark schema + column constants
@@ -122,8 +122,8 @@ The curated CSVs in `data/curated/` are designed to be imported directly into Po
 ### Installation
 
 ```bash
-git clone <this-repo-url>
-cd reckitt-fmcg-analytics
+git clone <https://github.com/uthrahh/Reckitt-Dashboard>
+cd Reckitt-Dashboard
 python -m venv .venv
 .venv\Scripts\activate        # Windows
 pip install -r requirements.txt
