@@ -55,7 +55,7 @@ See [docs/diagrams/system_architecture.md](docs/diagrams/system_architecture.md)
 ## Project Structure
 
 ```
-reckitt-fmcg-analytics/
+Reckitt-Dashboard/
 ├── config/
 │   ├── config.yaml              # paths, thresholds, environment settings
 │   └── schema_config.py         # explicit PySpark schema + column constants
