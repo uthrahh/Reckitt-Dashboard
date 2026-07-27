@@ -1,0 +1,171 @@
+{
+  "name": "Reckitt Executive Analytics",
+  "dataColors": [
+    "#1B3A5C",
+    "#2E6E9E",
+    "#5FA8D3",
+    "#8FC1E3",
+    "#B8D8EA",
+    "#D97D4C",
+    "#E8A87C",
+    "#7A8B99"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#1A1A1A",
+  "tableAccent": "#1B3A5C",
+
+  "good": "#2E8B57",
+  "neutral": "#D9A400",
+  "bad": "#C0392B",
+
+  "maximum": "#1B3A5C",
+  "center": "#8FC1E3",
+  "minimum": "#F2F2F2",
+  "null": "#CCCCCC",
+
+  "textClasses": {
+    "callout": {
+      "fontSize": 32,
+      "color": "#1B3A5C"
+    },
+    "title": {
+      "fontSize": 14,
+      "color": "#1A1A1A"
+    },
+    "header": {
+      "fontSize": 11,
+      "color": "#5A6B7A"
+    },
+    "label": {
+      "fontSize": 10,
+      "color": "#3A3A3A"
+    }
+  },
+
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [{ "color": { "solid": { "color": "#FFFFFF" } }, "transparency": 0 }],
+        "border": [{ "show": false }],
+        "outline": [{ "show": false }],
+        "outlineColor": [{ "solid": { "color": "#E5E7EA" } }],
+        "outlineWeight": [{ "value": 1 }],
+        "visualHeader": [{
+          "show": true,
+          "background": { "solid": { "color": "#FFFFFF" } },
+          "foreground": { "solid": { "color": "#1A1A1A" } },
+          "transparency": 0
+        }],
+        "general": [{
+          "responsive": true
+        }],
+        "dropShadow": [{
+          "show": true,
+          "color": { "solid": { "color": "#000000" } },
+          "transparency": 92,
+          "position": "Bottom",
+          "shadowBlur": 8,
+          "angle": 90,
+          "distance": 2
+        }]
+      }
+    },
+    "card": {
+      "*": {
+        "labels": [{
+          "color": { "solid": { "color": "#1B3A5C" } },
+          "fontSize": 28,
+          "fontFamily": "Segoe UI Semibold"
+        }],
+        "categoryLabels": [{
+          "color": { "solid": { "color": "#5A6B7A" } },
+          "fontSize": 11,
+          "fontFamily": "Segoe UI"
+        }]
+      }
+    },
+    "kpi": {
+      "*": {
+        "trendline": [{ "lineColor": { "solid": { "color": "#2E6E9E" } } }],
+        "indicator": [{
+          "color": { "solid": { "color": "#1B3A5C" } },
+          "fontSize": 24
+        }],
+        "goal": [{ "fontSize": 11 }]
+      }
+    },
+    "lineChart": {
+      "*": {
+        "dataPoint": [{ "showAllDataPoints": false }],
+        "line": [{ "lineThickness": 2.5 }],
+        "categoryAxis": [{
+          "gridlineShow": false,
+          "fontSize": 9,
+          "color": { "solid": { "color": "#5A6B7A" } }
+        }],
+        "valueAxis": [{
+          "gridlineColor": { "solid": { "color": "#F0F1F3" } },
+          "gridlineStyle": "dashed",
+          "fontSize": 9
+        }]
+      }
+    },
+    "barChart": {
+      "*": {
+        "categoryAxis": [{ "fontSize": 9 }],
+        "valueAxis": [{
+          "gridlineColor": { "solid": { "color": "#F0F1F3" } },
+          "fontSize": 9
+        }],
+        "dataPoint": [{ "defaultColor": { "solid": { "color": "#2E6E9E" } } }]
+      }
+    },
+    "slicer": {
+      "*": {
+        "background": [{ "color": { "solid": { "color": "#FAFBFC" } } }],
+        "header": [{
+          "show": true,
+          "fontColor": { "solid": { "color": "#5A6B7A" } },
+          "fontSize": 10,
+          "background": { "solid": { "color": "#FAFBFC" } }
+        }],
+        "items": [{
+          "fontColor": { "solid": { "color": "#1A1A1A" } },
+          "fontSize": 10
+        }],
+        "selection": [{
+          "selectAllCheckboxEnabled": true,
+          "singleSelect": false
+        }]
+      }
+    },
+    "tableEx": {
+      "*": {
+        "grid": [{
+          "gridVertical": false,
+          "gridHorizontalColor": { "solid": { "color": "#EEF0F2" } },
+          "rowPadding": 6
+        }],
+        "columnHeaders": [{
+          "fontColor": { "solid": { "color": "#FFFFFF" } },
+          "backColor": { "solid": { "color": "#1B3A5C" } },
+          "fontSize": 10,
+          "bold": true
+        }],
+        "values": [{
+          "fontSize": 10,
+          "backColorPrimary": { "solid": { "color": "#FFFFFF" } },
+          "backColorSecondary": { "solid": { "color": "#F8F9FA" } }
+        }]
+      }
+    },
+    "shape": {
+      "*": {
+        "fill": [{ "fillColor": { "solid": { "color": "#1B3A5C" } } }]
+      }
+    },
+    "textbox": {
+      "*": {}
+    }
+  }
+}
