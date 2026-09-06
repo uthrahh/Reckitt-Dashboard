@@ -20,14 +20,14 @@ Reckitt's FMCG sales data is spread across geography, product, store, supplier, 
 
 ## Features
 
-- ✅ Explicit PySpark schema (no `inferSchema` — see [technical_design.md](docs/technical_design.md))
-- ✅ Automated data quality validation with configurable thresholds
-- ✅ Robust cleaning: comma-formatted numbers, placeholder tokens (`-`, `NA`, `N/A`, `NULL`, blank, whitespace), exact-duplicate removal
-- ✅ Feature engineering: calendar attributes, price-per-unit, category sales rank (window function), inventory risk flag
-- ✅ Star schema with **guaranteed unique dimension natural keys** — dimensions are validated before every fact join, preventing row explosion
-- ✅ Windows-safe CSV export (no Hadoop NativeIO / winutils dependency)
-- ✅ Structured, professional execution log with per-stage timing
-- ✅ 39 automated pytest tests covering ingestion, validation, cleaning, feature engineering, star schema, and full pipeline integration
+- Explicit PySpark schema (no `inferSchema` — see [technical_design.md](docs/technical_design.md))
+- Automated data quality validation with configurable thresholds
+- Robust cleaning: comma-formatted numbers, placeholder tokens (`-`, `NA`, `N/A`, `NULL`, blank, whitespace), exact-duplicate removal
+- Feature engineering: calendar attributes, price-per-unit, category sales rank (window function), inventory risk flag
+- Star schema with **guaranteed unique dimension natural keys** — dimensions are validated before every fact join, preventing row explosion
+- Windows-safe CSV export (no Hadoop NativeIO / winutils dependency)
+- Structured, professional execution log with per-stage timing
+- 39 automated pytest tests covering ingestion, validation, cleaning, feature engineering, star schema, and full pipeline integration
 
 ## Architecture
 
@@ -148,25 +148,6 @@ pytest
 
 See [docs/deployment.md](docs/deployment.md) for troubleshooting (including the Windows Hadoop NativeIO issue this project's export layer was specifically designed to avoid).
 
-## Future Improvements
-
-- Migrate curated export from pandas-CSV back to Spark-native Parquet once running in a proper Hadoop-configured environment (better compression, preserves types for Power BI)
-- Add Slowly Changing Dimension (Type 2) support for `dim_product` if source data begins including change timestamps
-- Incremental/append-mode ingestion instead of full reload
-- CI pipeline (GitHub Actions) running `pytest` on every push
-- Data quality metrics tracked over time (trend dashboard, not just point-in-time)
-
-## Lessons Learned
-
-- **`distinct()` is not a safe deduplication strategy for dimension tables** — it dedupes on the full row, so any attribute-level inconsistency for the same natural key produces multiple dimension rows and silently explodes fact-table joins. `groupBy(natural_key).agg(F.first(...))` is the correct pattern.
-- **Validate before you join, not after.** Catching duplicate natural keys after a row explosion means debugging a 700K-row table; catching it before the join means reading a 6-line PASS/FAIL report.
-- **Native Parquet/CSV writers assume a properly configured Hadoop environment.** For a local Windows dev setup, `pandas.to_csv()` is a pragmatic, dependency-free alternative — with the explicit tradeoff that it collects data to the driver, which only works at small-to-medium scale.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
 ## Acknowledgements
 
 - Built as part of a Data Engineering internship project.
-- Star schema and dimensional modeling approach informed by Kimball Group methodology.
