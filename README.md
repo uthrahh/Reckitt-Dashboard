@@ -105,11 +105,22 @@ Grain: one `fact_sales` row = one product sold at one store in one month. Full f
 
 ## Power BI Dashboard
 
-The curated CSVs in `data/curated/` are designed to be imported directly into Power BI as a star schema (import mode). Recommended relationships: single-direction, one-to-many, `fact_sales` on the many side. *(Dashboard screenshots to be added after Power BI build phase.)*
+The curated CSVs in `data/curated/` import directly into Power BI as a star schema (import mode), with single-direction, one-to-many relationships and `fact_sales` on the many side. The report file is [`powerbi/Reckitt_Executive_Analytics.pbix`](powerbi/Reckitt_Executive_Analytics.pbix) (PDF export: [`Reckitt_Executive_Analytics.pdf`](powerbi/Reckitt_Executive_Analytics.pdf)); DAX measures are documented in [`powerbi/dax_measures.md`](powerbi/dax_measures.md).
 
-`[Screenshot placeholder: Executive Overview page]`
-`[Screenshot placeholder: Regional Performance drill-through]`
-`[Screenshot placeholder: Inventory & Supply Chain page]`
+<p align="center">
+  <img src="docs/images/powerbi-executive-overview.png" alt="Executive Overview page: revenue, units and average selling price KPIs with revenue by store type, category, brand and region" width="100%" />
+</p>
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/powerbi-geographic-analysis.png" alt="Geographic Analysis page: revenue by state and city" /><br /><sub><b>Geographic Analysis</b> · revenue by state and city</sub></td>
+    <td width="50%"><img src="docs/images/powerbi-store-performance.png" alt="Store Performance page: revenue, units and average selling price by store type" /><br /><sub><b>Store Performance</b> · revenue, units and ASP by store type</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/images/powerbi-supply-chain.png" alt="Supply Chain page: supplier lead time, inventory risk and order status" /><br /><sub><b>Supply Chain</b> · supplier lead time, inventory risk, order status</sub></td>
+    <td width="50%"><img src="docs/images/powerbi-drill-through.png" alt="Drill-through page: revenue trend, return and cancellation rates for a selection" /><br /><sub><b>Drill-through</b> · trend, return and cancellation rates for any selection</sub></td>
+  </tr>
+</table>
 
 ## How to Run
 
